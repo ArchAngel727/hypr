@@ -94,6 +94,8 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 hl.bind(mainMod .. " + SHIFT + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + SHIFT + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
+hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
+
 ---------------
 --- Special ---
 ---------------
