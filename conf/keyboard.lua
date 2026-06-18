@@ -44,6 +44,10 @@ hl.bind(
   mainMod .. " + CTRL + SHIFT + M",
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
+hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%"))
+hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 50%"))
+hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 70%"))
+hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
 
 -- Move focus
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -93,8 +97,6 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + SHIFT + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + SHIFT + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
-hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
 
 ---------------
 --- Special ---
