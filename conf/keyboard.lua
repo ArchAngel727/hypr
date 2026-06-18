@@ -122,3 +122,12 @@ hl.bind(mainMod .. " + SHIFT + W", function()
     monitor = "+1",
   }))
 end)
+
+---------------
+--- Plugins ---
+---------------
+
+hl.bind(mainMod .. " + TAB", hl.plugin.hymission.toggle)
+hl.bind(mainMod .. " + CTRL + TAB", function()
+  hl.plugin.hymission.open("onlycurrentworkspace")
+end)
