@@ -1,9 +1,9 @@
 hl.config({
   input = {
-    kb_layout = "us",
+    kb_layout = "us,de",
     kb_variant = "",
     kb_model = "",
-    kb_options = "grp:win_space_toggle",
+    kb_options = "grp:win_space_toggle,fkeys:basic_13-24",
     kb_rules = "",
 
     follow_mouse = 1,

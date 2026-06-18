@@ -5,7 +5,7 @@ hl.config({
   },
 })
 
-hl.bind("SUPER + tab", function()
+hl.bind("SUPER + SHIFT + tab", function()
   local layouts = { "scrolling", "dwindle", "master", "monocle" }
   local workspace = hl.get_active_workspace()
   if hl.get_active_special_workspace() then
