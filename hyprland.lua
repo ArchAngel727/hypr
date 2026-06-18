@@ -1,0 +1,10 @@
+require("conf.env")
+require("conf.autostart")
+
+require("conf.monitors")
+require("conf.permission")
+require("conf.windowrules")
+require("conf.input")
+require("conf.keyboard")
+require("conf.misc")
+require("conf.look-and-feel")
