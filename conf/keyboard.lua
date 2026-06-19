@@ -48,6 +48,19 @@ hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SIN
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 50%"))
 hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 70%"))
 hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
+hl.bind(
+  "Print",
+  hl.dsp.exec_cmd(
+    [[grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of whole screen taken' -t 1000]]
+  )
+)
+
+hl.bind(
+  "SHIFT + Print",
+  hl.dsp.exec_cmd(
+    [[grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of the region taken' -t 1000]]
+  )
+)
 
 -- Move focus
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
