@@ -5,6 +5,7 @@ hl.monitor({
   mode = "1920x1080@240",
   position = "0x0",
   scale = "1",
+  icc = os.getenv("HOME") .. "/.config/hypr/icc/profile.icm",
 })
 
 hl.monitor({

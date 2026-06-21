@@ -21,7 +21,6 @@ hl.on("hyprland.start", function()
 
   hl.exec_cmd("thunderbird")
   hl.exec_cmd("steam")
-  -- hl.exec_cmd(os.getenv("HOME") .. "~/.config/hypr/vesktop.sh")
   hl.exec_cmd("vesktop")
   hl.exec_cmd(os.getenv("HOME") .. "/.cargo/bin/wppr scrape")
 end)
