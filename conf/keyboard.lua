@@ -134,7 +134,7 @@ hl.bind(mainMod .. " + SHIFT + W", function()
   }))
 end)
 
-hl.bind("switch:Lid", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock"))
 
 ---------------
 --- Plugins ---
