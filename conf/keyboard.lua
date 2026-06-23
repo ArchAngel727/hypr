@@ -54,6 +54,19 @@ hl.bind(mainMod .. " + F7", hl.dsp.exec_cmd("brightnessctl set 1"))
 hl.bind(mainMod .. " + F8", hl.dsp.exec_cmd("brightnessctl set 25%"))
 hl.bind(mainMod .. " + F9", hl.dsp.exec_cmd("brightnessctl set 50%"))
 hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
+hl.bind(
+  "Print",
+  hl.dsp.exec_cmd(
+    [[grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of whole screen taken' -t 1000]]
+  )
+)
+
+hl.bind(
+  "SHIFT + Print",
+  hl.dsp.exec_cmd(
+    [[grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of the region taken' -t 1000]]
+  )
+)
 
 -- Move focus
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
