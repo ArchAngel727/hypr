@@ -2,6 +2,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("hyprpm reload")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("systemctl --user start opentabletdriver.service")
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 
   hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"')
   hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"')
