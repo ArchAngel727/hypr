@@ -34,6 +34,7 @@ hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/rofi/launchers/type-2/launcher.sh"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("kitty --class float-center -e " .. os.getenv("HOME") .. "/.cargo/bin/wppr"))
+hl.bind(mainMod .. " + G", hl.dsp.window.center({ action = "toggle" }))
 hl.bind(
   mainMod .. " + SHIFT + V",
   hl.dsp.exec_cmd(
