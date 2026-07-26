@@ -23,3 +23,9 @@ hl.gesture({
   direction = "horizontal",
   action = "workspace",
 })
+
+hl.config({
+  cursor = {
+    no_hardware_cursors = true,
+  },
+})
