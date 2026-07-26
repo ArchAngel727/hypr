@@ -32,3 +32,7 @@ hl.env("PROTON_NVIDIA_LIBS", "1")
 hl.env("PROTON_NO_WM_DECORATION", "1")
 hl.env("PROTON_LOCAL_SHADER_CACHE", "0")
 hl.env("PROTON_ENABLE_MEDIACONV", "1")
+
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("NVD_BACKEND", "direct")
+hl.env("MOZ_DISABLE_RDD_SANDBOX", "1")
