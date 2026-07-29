@@ -148,12 +148,3 @@ hl.bind(mainMod .. " + SHIFT + W", function()
 end)
 
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock"))
-
----------------
---- Plugins ---
----------------
-
-hl.bind(mainMod .. " + TAB", hl.plugin.hymission.toggle)
-hl.bind(mainMod .. " + CTRL + TAB", function()
-  hl.plugin.hymission.open("onlycurrentworkspace")
-end)

@@ -19,27 +19,42 @@ hl.config({
   },
 })
 
-hl.plugin.hymission.gesture({
+hl.gesture({
   fingers = 3,
   direction = "horizontal",
   action = "workspace",
 })
 
-hl.plugin.hymission.gesture({
+hl.gesture({ fingers = 2, direction = "pinch", action = "cursorZoom", zoom_level = 1, mode = "live" })
+
+hl.gesture({
   fingers = 3,
   direction = "up",
-  action = "open",
-})
+  action = function()
+    local layouts = { "scrolling", "dwindle" }
+    local workspace = hl.get_active_workspace()
+    if hl.get_active_special_workspace() then
+      workspace = hl.get_active_special_workspace()
+    end
 
-hl.plugin.hymission.gesture({
-  fingers = 3,
-  direction = "down",
-  action = "close",
-})
+    local next_layout = "dwindle"
 
-hl.plugin.hymission.gesture({
-  fingers = 4,
-  direction = "up",
-  action = "open",
-  scope = "onlycurrentworkspace",
+    if not workspace then
+      return
+    end
+
+    for i = 1, #layouts do
+      if layouts[i] == workspace.tiled_layout then
+        local next_layout_idx = (i % #layouts) + 1
+        next_layout = layouts[next_layout_idx]
+        break
+      end
+    end
+
+    if workspace.special then
+      hl.workspace_rule({ workspace = tostring(workspace.name), layout = next_layout })
+    else
+      hl.workspace_rule({ workspace = tostring(workspace.id), layout = next_layout })
+    end
+  end,
 })
