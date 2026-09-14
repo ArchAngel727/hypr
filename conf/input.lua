@@ -29,6 +29,14 @@ hl.gesture({ fingers = 2, direction = "pinch", action = "cursorZoom", zoom_level
 
 hl.gesture({
   fingers = 3,
+  direction = "down",
+  action = function()
+    hl.exec_cmd("~/.config/rofi/launchers/type-2/launcher.sh")
+  end,
+})
+
+hl.gesture({
+  fingers = 3,
   direction = "up",
   action = function()
     local layouts = { "scrolling", "dwindle" }

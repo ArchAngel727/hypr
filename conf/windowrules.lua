@@ -18,7 +18,6 @@ hl.window_rule({
 
 hl.window_rule({ workspace = 1, match = { class = "vesktop" } })
 hl.window_rule({ workspace = 3, match = { class = "org.mozilla.Thunderbird" } })
-hl.window_rule({ workspace = 4, match = { class = "steam" } })
 
 hl.window_rule({
   name = "floater",
