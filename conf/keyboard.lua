@@ -49,19 +49,27 @@ hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SIN
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 50%"))
 hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 70%"))
 hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
-hl.bind(
-  "Print",
-  hl.dsp.exec_cmd(
-    [[grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of whole screen taken' -t 1000]]
-  )
-)
 
-hl.bind(
-  "SHIFT + Print",
-  hl.dsp.exec_cmd(
-    [[grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of the region taken' -t 1000]]
-  )
-)
+-- SCREENSHOT --
+-- hl.bind(
+--   "Print",
+--   hl.dsp.exec_cmd(
+--     [[grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of whole screen taken' -t 1000]]
+--   )
+-- )
+--
+-- hl.bind(
+--   "SHIFT + Print",
+--   hl.dsp.exec_cmd(
+--     [[grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of the region taken' -t 1000]]
+--   )
+-- )
+
+hl.bind("Print", function()
+  local mon = hl.get_active_monitor()
+  local n = mon and mon.id or 0
+  hl.exec_cmd("flameshot screen --number " .. n .. " --edit")
+end)
 
 -- Move focus
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -116,9 +124,6 @@ hl.bind(mainMod .. " + SHIFT + mouse:273", hl.dsp.window.resize(), { mouse = tru
 --- Special ---
 ---------------
 
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
-
 hl.bind("XF86AudioMute", mute_audio)
 hl.bind("XF86AudioMicMute", mute_mic)
 hl.bind("F13", mute_audio)
@@ -131,8 +136,8 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -i 5"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -d 5"))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
 
 hl.bind(mainMod .. " + SHIFT + W", function()
   hl.dispatch(hl.dsp.workspace.move({
