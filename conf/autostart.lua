@@ -8,7 +8,7 @@ hl.on("hyprland.start", function()
 
   hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'")
-  hl.exec_cmd("gsettings set org.gnome.desktop.interface 'Remilia-Scarlet'")
+  hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Remilia-Scarlet'")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 24")
 
   hl.exec_cmd("awww-daemon")
@@ -24,4 +24,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("steam")
   hl.exec_cmd("vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland")
   hl.exec_cmd(os.getenv("HOME") .. "/.cargo/bin/wppr scrape")
+  hl.exec_cmd("easyeffects --gapplication-service")
+
+  hl.exec_cmd("wooting-bg-service")
 end)
