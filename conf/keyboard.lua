@@ -3,7 +3,6 @@
 -----------------
 
 local mainMod = "SUPER"
-local terminal = "kitty -e tmux"
 
 local mute_audio = hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
 local mute_mic = hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
@@ -28,7 +27,8 @@ end
 --- Controls ---
 ----------------
 
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
+hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("kitty -e tmux"))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/rofi/launchers/type-2/launcher.sh"))
