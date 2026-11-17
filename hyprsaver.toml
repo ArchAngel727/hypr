@@ -1,0 +1,7 @@
+[behavior]
+fade_in_ms = 500
+fade_out_ms = 100
+
+[[monitor]]
+name = "eDP-1"
+shader = "matrix"
