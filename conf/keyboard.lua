@@ -3,7 +3,6 @@
 -----------------
 
 local mainMod = "SUPER"
-local terminal = "kitty -e tmux"
 
 local mute_audio = hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
 local mute_mic = hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
@@ -28,7 +27,8 @@ end
 --- Controls ---
 ----------------
 
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
+hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("kitty -e tmux"))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/rofi/launchers/type-2/launcher.sh"))
@@ -54,19 +54,12 @@ hl.bind(mainMod .. " + F7", hl.dsp.exec_cmd("brightnessctl set 1"))
 hl.bind(mainMod .. " + F8", hl.dsp.exec_cmd("brightnessctl set 25%"))
 hl.bind(mainMod .. " + F9", hl.dsp.exec_cmd("brightnessctl set 50%"))
 hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
-hl.bind(
-  "Print",
-  hl.dsp.exec_cmd(
-    [[grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of whole screen taken' -t 1000]]
-  )
-)
 
-hl.bind(
-  "SHIFT + Print",
-  hl.dsp.exec_cmd(
-    [[grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png; dunstify 'Screenshot of the region taken' -t 1000]]
-  )
-)
+hl.bind("Print", function()
+  local mon = hl.get_active_monitor()
+  local n = mon and mon.id or 0
+  hl.exec_cmd("flameshot screen --number " .. n .. " --edit")
+end)
 
 -- Move focus
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
@@ -130,8 +123,8 @@ hl.bind("XF86AudioMicMute", mute_mic)
 hl.bind("F13", mute_audio)
 hl.bind("F14", mute_mic)
 
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), { repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { repeating = true })
 
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
