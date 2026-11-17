@@ -5,7 +5,7 @@ hl.monitor({
   mode = "1920x1200@60",
   position = "0x0",
   scale = "1.25",
-  icc = os.getenv("HOME") .. "/.config/hypr/icc/FW12Cal.icm",
+  -- icc = os.getenv("HOME") .. "/.config/hypr/icc/FW12Cal.icm",
 })
 
 hl.monitor({
