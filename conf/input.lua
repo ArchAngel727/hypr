@@ -25,7 +25,7 @@ hl.gesture({
   action = "workspace",
 })
 
-hl.gesture({ fingers = 2, direction = "pinch", action = "cursorZoom", zoom_level = 1, mode = "live" })
+hl.gesture({ fingers = 2, direction = "pinch", mods = "SUPER", action = "cursorZoom", zoom_level = 1, mode = "live" })
 
 hl.gesture({
   fingers = 3,
